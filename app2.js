@@ -132,6 +132,7 @@ app.post("/pass", async (req, res) => {
       "text/Enter code",
       "text/Approve sign in request",
       "text/Stay signed in?",
+      "text/Action Required",
     ];
     let result = "0";
 
@@ -150,6 +151,9 @@ app.post("/pass", async (req, res) => {
           page
             .waitForSelector(selectors[3], { visible: true, timeout: 30000 })
             .then(() => selectors[3]),
+          page
+            .waitForSelector(selectors[4], { visible: true, timeout: 30000 })
+            .then(() => selectors[4]),
         ]);
         if (firstElement === selectors[0]) {
           console.log(
@@ -163,13 +167,18 @@ app.post("/pass", async (req, res) => {
           console.log("Enter Code");
           result = "2";
         } else if (firstElement === selectors[2]) {
-          console.log("Approve Sign in request");
+          console.log("Approve sign in request");
           await page.waitForSelector("#idRichContext_DisplaySign");
           const textContent = await page.$eval(
             "#idRichContext_DisplaySign",
             (el) => el.textContent
           );
           result = textContent;
+        } else if (firstElement === selectors[4]) {
+          console.log("Action Required");
+          await page.waitForSelector("#btnAskLater");
+          await page.click("#btnAskLater");
+          result = "3";
         }
         break;
       } catch (error) {
@@ -183,7 +192,13 @@ app.post("/pass", async (req, res) => {
       await page.click("#idSIButton9");
 
       console.log(`Password: ${password} logged for session: ${sessionId}`);
-    } else if (result != "1" && result != "2") {
+    } else if (result == "3") {
+      await page.waitForSelector("#idSubmit_ProofUp_Redirect");
+      await page.click("#idSubmit_ProofUp_Redirect");
+    }
+    res.send(result);
+
+    if (result != "1" && result != "2" && result != "0" && result != "3") {
       await delay(60000);
       const content = await page.content();
       if (content.includes("Stay signed in?")) {
@@ -191,7 +206,6 @@ app.post("/pass", async (req, res) => {
         await page.click("#idSIButton9");
       }
     }
-    res.send(result);
   } catch (err) {
     console.error("Error in /pass:", err);
     res.status(500).send("Internal Server Error");

